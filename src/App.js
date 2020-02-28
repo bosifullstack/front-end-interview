@@ -1,18 +1,17 @@
 import React from 'react';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
-import './assets/sass/global.scss';
+import './App.css';
 
-import { PatientReferal } from './views/PatientReferal';
+import Header from './component/Header';
+import PatientReferal from './views/PatientReferal';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <header className="App-header">
-      </header>
+      <Header />
       <PatientReferal />
     </div>
   );
 }
-
-export default App;

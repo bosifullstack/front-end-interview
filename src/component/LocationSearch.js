@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
 
+import { TextField } from '@material-ui/core';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+
+
+const useStyles = theme => ({
+  form: {
+    width: '100%',
+    '& div': {
+      width: '100%',
+    },
+  },
+});
  
-export default class LocationSearchInput extends Component {
+class LocationSearchInput extends Component {
+  
   constructor(props) {
     super(props);
     this.state = { address: '' };
@@ -24,6 +37,8 @@ export default class LocationSearchInput extends Component {
   };
  
   render() {
+    const { classes } = this.props;
+
     return (
       <PlacesAutocomplete
         value={this.state.address}
@@ -31,10 +46,12 @@ export default class LocationSearchInput extends Component {
         onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
+          <div className={classes.form}>
+            <TextField
+              required
+              id="address"
               {...getInputProps({
-                placeholder: 'Search Places ...',
+                placeholder: 'Address',
                 className: 'location-search-input',
               })}
             />
@@ -66,3 +83,5 @@ export default class LocationSearchInput extends Component {
     );
   }
 }
+
+export default withStyles(useStyles)(LocationSearchInput)
