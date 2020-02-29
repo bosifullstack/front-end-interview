@@ -19,15 +19,6 @@ const useStyles = theme => ({
 });
  
 class LocationSearchInput extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = { address: '' };
-  }
- 
-  handleChange = address => {
-    this.setState({ address });
-  };
  
   handleSelect = address => {
     geocodeByAddress(address)
@@ -37,19 +28,21 @@ class LocationSearchInput extends Component {
   };
  
   render() {
-    const { classes } = this.props;
+    const { classes, address, handleChange, index } = this.props;
 
     return (
       <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
+        value={address}
+        onChange={address => handleChange(index, 'address', address)}
+        onSelect={address => handleChange(index, 'address', address)}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={classes.form}>
             <TextField
               required
               id="address"
+              value={address}
+              onChange={e => handleChange(index, 'address', e.target.value)}
               {...getInputProps({
                 placeholder: 'Address',
                 className: 'location-search-input',

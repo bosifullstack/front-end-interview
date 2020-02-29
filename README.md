@@ -4,10 +4,13 @@
 
 ## Assumptions or project decisions
 
-Based on my previous experiences, I prefer to start a project using the Sass CSS pre-processor. Its features allows the CSS project to be better organized, facilitating the project stylesheets to grow freely.
+I decided to use css-in-js since I was suggested to use Material-UI in the project. I also used a date-picker on the birth-date input to get a better UI for the user.
+
+One of my assumptions was that the backend would receive only one patient per POST request.
 
 ## What I would have done differently, if I've had more time
 
 - TypeScript. I've never used TypeScript on a React project, so I still don't know enough about it to use it with proficiency;
-- React hooks. I'm still used to use class based component, since first I learn to write components based on a class api in React and in Vue.js.
+- Redux, if the project were bigger and have more features;
+- Because of the time constrain, I didn't made the shape of the data received on the state of the main view equivalent to the shape contained of the dataShape file. however, I know the importance of treating the data that we get on the front-end before sending it to the back-end.
 
